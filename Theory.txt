@@ -1,0 +1,226 @@
+Typescript - Introduction Version 2.4
+
+What is JS:
+    - Constructor Function, Prototypes, Dynamic Types(int to string) - ES5, ES6
+
+What is Typescript:
+    - Wrapper for JS - Adds Strong Types, Generics and Interfaces.
+    - TS is always compiled to JS, Cannot run directly in Browsers.
+
+Try Typescript(Playground):
+    https://www.typescriptlang.org/play/index.html
+
+Why Typescript:
+    - Avoid common loopholes in javascript and developer errors.
+    - Less scope for developer introduced bugs.
+
+Installation:
+    - open nodejs commandline 
+    - npm -g install typescript
+    - all files should end with .ts for typescript
+    - compile code : tsc --init and then tsc
+
+Features:
+
+    ES6 Support : Not necessarily all ES6 Features are supported by TypeScript, but quite a lot of them are.
+        - var
+        - let : Create a variable block scope inside { }.
+        - const : Create a variable in global scope, Cannot be reassigned. Allows to create immutable variable.
+        - block scope : scope is always with respective to {}
+            let variable = "this";
+            var logVariable = function() {
+                console.log(variable); // will display undefined since variable is not passed to the function.
+                let logVariable = "function this";
+                console.log(variable); // will display "function this" because it is in context with function scope.
+            };
+
+        - arrow functions : () => { } or () => statement;
+            let multiplyFunction = (num1: number, num2: number):number => num1 * num1;
+            console.log(multiplyFunction(1,2)); // will display 2
+
+            let addFunction = (num1: number, num2: number):number => {
+                return num1 + num1;
+            }
+            console.log(addFunction(1,2)); // will display 3
+            
+            - alternatively can use
+                //for single parameter but cannot be used with type casting, I suggest to always avid this.
+                greet => console.log(greet);
+
+            - default parameters
+                var test = (a: number = 10): void => { console.log(a) }
+                test(); // will display default value 10
+                test(20); // will display 20
+                
+                - rules learn as part of es 6 for example
+                var test = (a: number = 10, b: number = a - 2): void => { console.log(a * b) }
+                test();// will display default calculation 80 
+        
+        - spread & rest :
+            - const numbers = [10, 20, 30, 40, 50];
+              console.log(Math.max(...numbers)); //...spread operator spreads the array of numbers as parameters 10,20,30, etc
+            - let someFunction(name, ...args: number[]) => {
+                 console.log(name)
+                 return args;
+              };
+              someFunction("List of Numbers", 10, 20, 30, 50, 60); // reverse of spread returns [10, 20, 30, 40]
+        - Destructuring array : 
+            const hobbies: string[] = ["Games", "Machine Learming"];
+            const [hobby1, hobby2] = hobbies;
+            console.log(hobby1, hobby2); // will print hobbies individually
+        - Destructuring objects : 
+            let user: { name: string, age: number } = {
+                name: santosh",
+                age: 27
+            };
+            let { name: userName, age: userAge } = user; //create alias
+            console.log(userName, userAge); // will print user details individually
+        - Template Literals : 
+            
+            let variable: string = "Santosh";
+            let text: string = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore ut nisi minima fugiat, nesciunt explicabo autem? Cum 
+            dignissimos, quidem blanditiis repellendus ${variable}             
+            harum nesciunt error accusamus voluptatum enim voluptatibus molestiae at.`;
+            //allows multiline strings and ${varable} from place holder text
+        - Symbols,Iterators and Generators advanced ES6
+    Types:
+        - Type - its in the name
+            - string
+            - number
+            - boolean
+            - array
+            - custom(user defined)
+            - void
+            - undefined
+            - null
+            - union
+            - never
+            - any
+    Classes:
+        - more powerful than ES6 Classes.
+        - public, private and protected
+            - public: can be access from all instances of the class.
+            - private: can only be accessed with in the class.
+            - protected: can be used inside the class or inherited classes only.
+            - use __VariableName for private, _VariableName for protected this is borrowed from python standards    but is not mandatry.
+        - Inheritence :
+            - super keyword
+            - super calls the parent Constructor
+        - getter and setters.
+        - Static Properties.
+        - Singleton Classes.
+        - readonly Properties. 
+    Namespaces and Modules :
+        Namespace : 
+            - namespaces are used so as to not polute the global scope.
+            - any methods or properties of the namespace have to be exporeted to be used externally.
+                namespace test {
+                    const name: string = "Santosh";
+                    export let getName = () => this.name;
+                };
+                const name = "varma";
+                console.log(test.name()); // will still display santosh
+            - refrence namespace with ///<refrence path="Namespaces - 3/Namespace/namespace.ts" />
+            - namespaces can be nested.
+            - can import as import alias = namespace name;
+                -then use alias in code
+            - Module Impoters not required.
+            - disadvantages : 
+                - difficult to add too may refrences. Difficult for large projects.
+                - developer should be vigilent to not pollute global scope.
+
+        Modules : 
+            - ES6 import and export
+            - export a Modules
+                - Example
+                    export const PI = 3.141; //file1
+                    //.ts extention not required in import from
+                    import {} from "./path/filename" //file 2 
+                    console.log(PI);
+
+        Module Impoters:
+            commonjs, system, amd, umd
+    Interfaces :
+        - similarities with "type" keyword, but unlike "type" interface can be implemented by classes.
+        - Interfaces can extend other Interfaces.
+        - in terms JS it gives structure to JSON.
+        - Function Types
+            interface name {
+                (val1: number, val2:number): number;
+            }
+
+            let functionName: name;
+        - abstract vs interface
+            - classes can extend abstract and implement interface.
+            - interfaces can be used with unrelated class.
+
+    Genrics :
+        - Why Genrics. can be easly explained by example.
+        - definition <G> or <Any Character>. 
+        - sample : let genericPrint = <G>(data: G) => data;
+        - Built in Generics : Array
+        - Variable Genrics types
+            let arrayFunctionGeneric = <G>(data: G[]): G[] => data;
+            arrayFunctionGeneric([12, 13, 14]);
+            arrayFunctionGeneric(["string0", "string1", "string2", "string3"]);
+
+            same funtion 2 types of arrays
+        - Generic Types:
+            let genericType: <G> (data: G[]) => G[] = arrayFunctionGeneric;
+            console.log(genericType<string>(["string0", "string1", "string2", "string3"]));
+        - Generic Classes
+            class Person<G> {
+                name: G;
+            }
+        - extend Generics
+             class Person<G extend number> {
+                name: G;
+            }
+    Decorators : 
+        - syntax : function name(constructorFn: Function){
+                     
+                   }; // ts passes the constructorFn parameter, this function name can be attached to anything      including calsses using @
+        - Factory Decorator.
+        - Property Decorators.
+        - Parameter Decorators.
+        - Multiple Decorators.
+        - Metadata - Advanced Concept - Lookup Below
+            - https://www.typescriptlang.org/docs/handbook/decorators.html
+    
+    Other Frameworks:
+        - serach for 
+            - definitelytyped jquery
+            - definitelytyped angular
+            - definitelytyped any Frameworks
+        - Write a definition File with framework.d.ts extention, and the import normally in ts file
+            - install @types 
+            - set map to original files in ts config
+                map: {
+                    "jQuery": "node_modules/jquery/dist/jquery.min.js",
+                    "angular": "node_modules/angular/angular.min.js"
+                },
+            - import "jQuery" in your typescript file
+            - dont forget bundeling either t amd or system
+
+How Typescript Compiler works And HOW!!!! to Configure it.
+    - warns but still compiles to JS
+    - Types are not avaliable in JS, so TS only indicates to the Developer something is wrong, but will not prevent compilation to JS.
+    - Use noEmit in ts config to stop the compilation to JS.
+    - options in tsconfig
+        - strict null check : will not allow to assign null t existing values.
+        - noEmit : incase of errors dont compile to JS. 
+        - sourceMap : genrate map file for TS and JS file
+
+Scripts : 
+    tsc
+    tsc ./index.ts
+    tsc ./index.ts --outFile ./app.js
+    tsc ./index.ts --module amd --outFile ./app.js
+    tsc ./index.ts --module system --outFile ./app.js
+
+    for external frameworks use typings
+    npm install -g typings
+    typings install dt~jquery -global --save
+
+    npm install --save-dev @types/jquery
+    npm install --save-dev @types/angular

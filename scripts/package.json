@@ -1,0 +1,24 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "Type Script Setup",
+  "main": "node.js",
+  "dependencies": {
+    "amd": "0.0.0",
+    "commonjs": "0.0.1",
+    "jquery": "^3.2.1",
+    "systemjs": "^0.19.36",
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "@types/angular": "^1.6.25",
+    "@types/jquery": "^2.0.47",
+    "@types/bootstrap": "^3.3.34",
+    "angular": "^1.6.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Santosh Varma Kosuri J",
+  "license": "MIT"
+}
