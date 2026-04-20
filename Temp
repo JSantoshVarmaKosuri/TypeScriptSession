@@ -633,3 +633,121 @@
 * **S11–S12 (Action):** “Fixing these enables immediate gains and unlocks AI’s full value; sequence is critical.”
 
 ---
+
+
+&&&&&&&&&&&&&
+
+Here is a **true consulting-style single slide** that compresses all root causes into one **sharp, partner-level narrative**.
+
+---
+
+# 🎯 **Slide Title**
+
+## **Delivery Underperformance Is Driven by Five Systemic Constraints Across Planning, Flow, Measurement, Data, and Stability**
+
+---
+
+# 🧠 **Slide Structure (Pyramid + MECE)**
+
+---
+
+## **Top Insight (Center, bold callout box)**
+
+> **AI is improving execution quality, but system-level constraints are preventing translation into delivery outcomes**
+
+---
+
+## **Main Body (5 Horizontal Pillars — Equal Weight)**
+
+### Layout:
+
+* 5 columns across the slide (each equal width)
+* Each column = **Title + 2 bullets (max)**
+
+---
+
+### **1. Backlog Readiness**
+
+* Incomplete stories and unclear dependencies
+* Low readiness at sprint start
+
+---
+
+### **2. Flow Efficiency**
+
+* High waiting time in workflow stages
+* Bottlenecks in QA and approvals
+
+---
+
+### **3. Metric Misalignment**
+
+* Over-reliance on velocity
+* Quality improvements not reflected
+
+---
+
+### **4. Data Fragmentation**
+
+* AI and delivery data not integrated
+* No visibility into cause-effect relationships
+
+---
+
+### **5. Delivery Variability**
+
+* High spillover and fluctuating velocity
+* Unstable delivery patterns
+
+---
+
+## **Bottom Insight (Full-width footer)**
+
+> **These constraints collectively limit efficiency, prevent meaningful insight generation, and make delivery outcomes unpredictable**
+
+---
+
+# 🎨 **Pixel-Perfect Layout**
+
+* Title: (x:80, y:80)
+* Top Insight Box: (x:300, y:180, width:1320, height:120)
+
+---
+
+### 5 Columns Grid:
+
+* Start: x = 80
+* Width per column: ~320 px
+* Gap: 20 px
+* Y position: 340
+* Height: 360
+
+---
+
+### Footer:
+
+* (x:80, y:760, width:1760)
+
+---
+
+# 🎯 **Design Notes (Consulting Style)**
+
+* Column titles: **Bold, 22 pt**
+* Bullets: 20 pt, max 2 per column
+* Use **icons above each column** (optional):
+
+  * 📦 Backlog
+  * 🔄 Flow
+  * 📊 Metrics
+  * 🔗 Data
+  * 📉 Variability
+
+---
+
+# 🎤 **What You Say (Critical)**
+
+> “We assessed the current state and identified five systemic constraints.
+> These span planning, execution flow, measurement, data integration, and delivery stability.
+> Individually they create inefficiencies—but collectively, they prevent AI from delivering measurable impact.”
+
+---
