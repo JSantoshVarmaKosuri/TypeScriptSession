@@ -1,0 +1,635 @@
+### **1) Backlog Readiness (Foundation)**
+
+**What to add/change in Power BI**
+
+* New page: **Backlog Health**
+* Visuals:
+
+  * “Ready vs Required Points (next 2–3 sprints)”
+  * **RAG heatmap by team**
+  * “Stories ready before sprint start (%)”
+  * “Dependency completeness (%)”
+
+**KPIs (standardize definitions)**
+
+* **Backlog Readiness %** = Ready story points / Required story points
+* **Pre-Sprint Readiness %** (T-3 days)
+* **Dependency Coverage %**
+* **Definition of Ready (DoR) Compliance %**
+
+**Targets**
+
+* Readiness ≥ **85%**
+* Pre-Sprint Readiness ≥ **80%**
+
+**AI enablement (only after above is stable)**
+
+* Auto-classify stories against DoR (missing ACs, unclear scope)
+* Dependency extraction from descriptions (flag hidden dependencies)
+* “Readiness gap” explanations (why a team is red)
+
+---
+
+### **2) Flow Efficiency (Throughput Engine)**
+
+**What to add/change in Power BI**
+
+* New page: **Flow & Bottlenecks**
+* Visuals:
+
+  * **Cycle time by stage** (stacked)
+  * **Queue time vs Work time**
+  * **WIP by stage**
+  * “Top 3 blocking states”
+
+**KPIs**
+
+* **Cycle Time (median & p85)**
+* **Queue Time %** (waiting / total)
+* **WIP per stage**
+* **Stage Aging (days)**
+
+**Targets**
+
+* Queue Time ≤ **30–40%**
+* p85 Cycle Time ↓ sprint-over-sprint
+
+**AI enablement**
+
+* Bottleneck detection (which stage is causing delay)
+* “What changed this sprint?” (driver analysis)
+* Recommendation: rebalance WIP / approvals / QA load
+
+---
+
+### **3) Metric Alignment (Measure the Right Outcomes)**
+
+**What to add/change in Power BI**
+
+* Replace single “velocity focus” with **Balanced Scorecard**
+* Combine AI + Delivery in one view
+
+**KPIs (balanced)**
+
+* **Output**: Velocity, Stories Delivered
+* **Efficiency**: Cycle Time, PR Merge Time
+* **Quality**: Defect Density, PR Rework/Comments
+* **AI Impact**: Acceptance Rate, LOC Accepted, Rework Reduction
+
+**New composite**
+
+* **Effective Delivery Index (EDI)**
+  = Velocity × (1 − Defect Rate) × (1 − Rework %)
+
+**Targets**
+
+* EDI ↑ consistently even if raw velocity fluctuates
+
+**AI enablement**
+
+* True “AI ROI” explanation (quality vs speed trade-off)
+* Identify teams where AI is helping vs hurting
+
+---
+
+### **4) Data Correlation Layer (Insight Engine)**
+
+**What to add/change in Power BI**
+
+* New page: **AI Impact & Correlation**
+* Visuals:
+
+  * AI Usage vs Velocity
+  * AI Usage vs Defects
+  * AI Usage vs Cycle Time
+  * Team comparison scatter plots
+
+**KPIs**
+
+* **AI Impact Score** (correlation-weighted index)
+* **AI Efficiency Delta** (before vs after adoption)
+* **AI Quality Delta**
+
+**Targets**
+
+* Positive correlation:
+
+  * AI ↑ → Defects ↓
+  * AI ↑ → Cycle Time ↓
+
+**AI enablement**
+
+* Root-cause narratives:
+
+  * “Team A improved due to high AI-assisted testing”
+* Cross-team best practice recommendations
+
+---
+
+### **5) Predictability Baseline (Forecast Engine)**
+
+**What to add/change in Power BI**
+
+* New page: **Predictability & Forecast**
+* Visuals:
+
+  * **Planned vs Completed (%) trend**
+  * **Spillover trend**
+  * **Velocity variance**
+  * **Forecast vs Actual**
+
+**KPIs**
+
+* **Commitment Reliability %**
+* **Spillover %**
+* **Velocity Variance (std dev)**
+* **On-Time Probability (%)**
+
+**Targets**
+
+* Reliability ≥ **85%**
+* Spillover ≤ **10–15%**
+* Variance ↓ over time
+
+**AI enablement**
+
+* Probability-based delivery forecast (not single dates)
+* Early warning: “Program X has 65% risk of delay”
+* Scenario simulation (what if capacity changes)
+
+---
+
+# **B. McKinsey-Style Single Slide (Executive Summary)**
+
+---
+
+## **Title**
+
+### **Unlocking AI Value in Delivery: Fix the Foundation to Enable Efficiency, Insights, and Predictability**
+
+---
+
+## **1. Current Situation (What we see)**
+
+* AI adoption is **high and growing**
+* Code quality signals are **improving**
+* However:
+
+  * Delivery velocity is **declining**
+  * Predictability is **inconsistent**
+  * Backlog readiness is **fragmented**
+
+---
+
+## **2. Core Insight (So what?)**
+
+> **The primary constraint is not engineering productivity, but planning quality and flow inefficiencies.**
+
+* AI is improving **how work is done**
+* But **what work is ready and how it flows** remains the bottleneck
+
+---
+
+## **3. Root Causes (Why?)**
+
+1. **Low Backlog Readiness**
+
+   * Incomplete stories, unclear dependencies
+
+2. **Flow Inefficiencies**
+
+   * Work waiting in queues (QA, approvals)
+
+3. **Misaligned Metrics**
+
+   * Measuring output, not effectiveness
+
+4. **Disconnected Data**
+
+   * AI and delivery metrics not linked
+
+5. **Unstable Delivery Patterns**
+
+   * High variability → poor predictability
+
+---
+
+## **4. Required Actions (What to do?)**
+
+### **Fix the Foundation First**
+
+* **Standardize backlog readiness (≥85%)**
+* **Reduce cycle time & bottlenecks**
+* **Adopt balanced performance metrics**
+* **Integrate AI + delivery data**
+* **Stabilize delivery patterns**
+
+---
+
+## **5. Expected Impact (Value)**
+
+* **Efficiency**
+
+  * 25–40% reduction in manual effort
+
+* **Insights**
+
+  * Faster root-cause identification
+
+* **Predictability**
+
+  * 20–30% improvement in delivery accuracy
+
+---
+
+## **6. Strategic Message**
+
+> “AI alone will not improve delivery outcomes.
+> Value is realized when AI is applied on top of strong planning, flow discipline, and aligned metrics.”
+
+---
+
+
+&&&&&&&&&&&&&&&
+
+---
+
+# 🎯 **Deck Theme & Master (apply to all slides)**
+
+**Canvas:** 16:9 (1920 × 1080)
+**Margins:** 80 px left/right, 60 px top, 60 px bottom
+**Grid:** 12 columns, 20 px gutters
+**Baseline grid:** 8 px
+
+**Typography**
+
+* Title (H1): 38–42 pt, Bold, Dark (#111827)
+* Section (H2): 24–28 pt, Semibold
+* Body: 20–22 pt, Regular
+* Footnote: 14–16 pt, Gray (#6B7280)
+
+**Colors**
+
+* Primary text: #111827
+* Secondary text: #374151
+* Accent: #2563EB (blue)
+* Positive: #16A34A (green)
+* Risk: #DC2626 (red)
+* Dividers: #E5E7EB
+
+**Components**
+
+* Divider line: 1 px #E5E7EB
+* Box: 1 px border, 8 px radius, 16–20 px padding
+* Icons: monochrome line (consistent set), 24 px
+
+---
+
+# **Slide 1 — Title**
+
+**Headline (H1)**
+
+> **Unlocking AI Value in Program Delivery**
+
+**Subhead (H2)**
+
+> Why current gains are not translating into delivery outcomes—and what to fix
+
+**Layout (pixel spec)**
+
+* H1 at (x:80, y:180), width 1200 px
+* H2 at (80, 260), width 1200 px
+* Footer (project/date) at (80, 1000), 14 pt gray
+* Optional accent bar: 4 px height, #2563EB from x:80 to x:600 at y:320
+
+---
+
+# **Slide 2 — Executive Message**
+
+**Headline**
+
+> **AI adoption and code quality are improving; delivery performance and predictability are not—indicating system-level inefficiencies**
+
+**Layout**
+
+* Two-column grid (each 5 cols; 2-col gap center)
+
+**Left (Signals) — four compact cards (2×2)**
+
+* Card size: 420×160 px, 16 px padding
+* Positions:
+
+  * Row1: (80, 260) & (520, 260)
+  * Row2: (80, 440) & (520, 440)
+
+**Cards content**
+
+* AI Adoption — “Increasing steadily” (accent underline)
+* Code Quality — “Improving (defects ↓, PR rework ↓)” (green tick)
+* Delivery Output — “Declining (velocity ↓, stories ↓)” (red arrow)
+* Predictability — “Unstable (variance ↑)” (amber dot)
+
+**Right (Insight box)**
+
+* Box at (980, 260), size 860×340 px
+* Text (H2 + body):
+
+  > **Constraint is systemic, not capability-related**
+  > Planning quality and flow efficiency are limiting outcomes; AI is improving execution quality but cannot offset upstream deficiencies.
+
+---
+
+# **Slide 3 — Problem Definition**
+
+**Headline**
+
+> **Current dashboards enable reporting, not decision-making**
+
+**Layout: three equal columns (3.5 cols each)**
+
+* Boxes at y:260, height 420 px
+
+**Columns**
+
+1. **Efficiency**
+
+   * Manual interpretation
+   * High SME dependence
+   * Slow reporting cycles
+
+2. **Insights**
+
+   * No root-cause visibility
+   * Limited cross-metric linkage
+
+3. **Predictability**
+
+   * Reactive risk identification
+   * Limited forward visibility
+
+**Footer (full width at y:720)**
+
+> Leadership is operating on lagging indicators rather than actionable intelligence
+
+---
+
+# **Slide 4 — Hypothesis**
+
+**Headline**
+
+> **Underperformance is driven by planning quality and flow inefficiencies—not development capability**
+
+**Layout**
+
+* Centered vertical chain (icons + arrows)
+* Each node box: 520×100 px, 16 px padding, centered
+
+**Positions**
+
+* Node1 at y:260: “Planning gaps (low readiness, unclear scope)”
+* Node2 at y:380: “Execution inefficiency (rework, delays)”
+* Node3 at y:500: “Reduced throughput (velocity ↓)”
+* Node4 at y:620: “Unreliable delivery (spillover, variance ↑)”
+
+**Right callout (at x:1180, y:260, w:660, h:220)**
+
+> AI improves execution quality but cannot compensate for upstream deficiencies
+
+---
+
+# **Slide 5 — Root Causes (MECE)**
+
+**Headline**
+
+> **Five structural constraints limit performance and suppress AI impact**
+
+**Layout**
+
+* Five equal boxes in a row (each 320×220 px)
+* Start at x:80; 20 px gaps
+
+**Boxes (title + 2 bullets)**
+
+1. Backlog Readiness — “DoR inconsistency; dependencies unclear”
+2. Flow Efficiency — “Queue time high; bottlenecks in QA/approvals”
+3. Metric Alignment — “Over-index on velocity; quality gains unrecognized”
+4. Data Integration — “AI and delivery metrics disconnected”
+5. Delivery Stability — “High variance; spillover present”
+
+**Footer**
+
+> These constraints jointly prevent efficiency, insight generation, and predictability
+
+---
+
+# **Slide 6 — Root Cause 1: Backlog Readiness**
+
+**Headline**
+
+> **Incomplete and inconsistent backlog readiness is the primary constraint to execution**
+
+**Layout: three vertical sections**
+
+**Left (Evidence) box (x:80, y:260, w:560, h:360)**
+
+* “RAG indicates multiple red teams”
+* “Ready points inconsistent vs targets”
+* “Spillover observed across sprints”
+
+**Middle (Implication) box (x:660, y:260, w:560, h:360)**
+
+* “Work enters sprints with ambiguity”
+* “Rework and mid-sprint churn increase”
+* “AI assistance is underutilized”
+
+**Right (Actions) box (x:1240, y:260, w:600, h:360)**
+
+* Standardize **Definition of Ready**
+* Track **Backlog Readiness ≥ 85%**
+* Enforce **T-3 pre-sprint readiness checks**
+
+**Footer**
+
+> Improving readiness unlocks immediate efficiency without adding capacity
+
+---
+
+# **Slide 7 — Root Cause 2: Flow Efficiency**
+
+**Headline**
+
+> **A significant portion of work time is spent waiting rather than progressing**
+
+**Layout**
+
+**Left (Evidence) (x:80, y:260, w:600, h:300)**
+
+* “Cycle time plateauing”
+* “High time in QA/approval states”
+
+**Center (Pipeline visual) (x:700, y:260, w:700, h:300)**
+
+* 5-stage horizontal bar: Backlog → Dev → QA → Approval → Done
+* Highlight QA & Approval with red top border (4 px)
+
+**Right (Actions) (x:1420, y:260, w:500, h:300)**
+
+* Measure **queue vs work time**
+* Identify **top 2 bottlenecks per program**
+* Apply **WIP controls**
+
+**Footer**
+
+> Flow optimization is the fastest lever to increase throughput
+
+---
+
+# **Slide 8 — Root Cause 3: Metric Alignment**
+
+**Headline**
+
+> **Current metrics underrepresent quality gains and distort performance assessment**
+
+**Layout**
+
+**Top (Observation strip) full width (y:260)**
+
+* “AI usage ↑ | Quality ↑ | Velocity ↓”
+
+**Bottom (Balanced Scorecard 2×2 grid)**
+
+* Each quadrant 520×260 px
+
+1. **Output** — Velocity, Stories
+2. **Quality** — Defects, PR rework
+3. **Efficiency** — Cycle time, Lead time
+4. **AI Impact** — Acceptance rate, Rework reduction
+
+**Footer**
+
+> Without alignment, AI benefits remain unrecognized in executive decisions
+
+---
+
+# **Slide 9 — Root Cause 4: Data Integration**
+
+**Headline**
+
+> **Disconnected AI and delivery data prevents causal insight and ROI visibility**
+
+**Layout**
+
+**Left (Current State) (x:80, y:260, w:700, h:300)**
+
+* Two stacked boxes:
+
+  * “AI metrics (usage, acceptance)”
+  * “Delivery metrics (velocity, defects)”
+* Dashed line between them labeled “No linkage”
+
+**Right (Target State) (x:820, y:260, w:1100, h:300)**
+
+* Single integrated box: “Unified model (AI × Delivery)”
+* Three bullets:
+
+  * Correlation: AI usage vs defects/cycle time
+  * Team-level comparisons
+  * Program-level impact
+
+**Footer**
+
+> Insight generation requires integrated data, not parallel reporting
+
+---
+
+# **Slide 10 — Root Cause 5: Delivery Stability**
+
+**Headline**
+
+> **High delivery variability undermines forecasting and commitment reliability**
+
+**Layout**
+
+**Left (Evidence) (x:80, y:260, w:600, h:300)**
+
+* “Spillover present across sprints”
+* “Velocity variance elevated”
+
+**Center (Chart placeholder) (x:700, y:260, w:700, h:300)**
+
+* Line chart: Planned vs Completed (show divergence)
+
+**Right (Actions) (x:1420, y:260, w:500, h:300)**
+
+* Track **Commitment Reliability ≥ 85%**
+* Reduce **Spillover ≤ 10–15%**
+* Monitor **Velocity variance**
+
+**Footer**
+
+> Predictability is a function of stability, not estimation precision
+
+---
+
+# **Slide 11 — Value Unlock**
+
+**Headline**
+
+> **Addressing structural constraints enables AI to deliver measurable business value**
+
+**Layout: three equal columns**
+
+**Efficiency (x:80, y:260, w:560, h:300)**
+
+* Reduced manual analysis
+* Faster execution cycles
+
+**Insights (x:660, y:260, w:560, h:300)**
+
+* Clear root-cause visibility
+* Accelerated decision-making
+
+**Predictability (x:1240, y:260, w:600, h:300)**
+
+* Early risk identification
+* Improved forecast accuracy
+
+**Bottom KPI bar (full width at y:620)**
+
+* 25–40% efficiency improvement
+* 3× faster insight generation
+* 20–30% improvement in predictability
+
+---
+
+# **Slide 12 — Recommendation**
+
+**Headline**
+
+> **Stabilize the operating model first; then scale AI to maximize impact**
+
+**Layout**
+
+**Priority ladder (centered)**
+
+* Five stacked bars (600×70 px each), 12 px gap
+
+1. Backlog readiness
+2. Flow efficiency
+3. Metric alignment
+4. Data integration
+5. Delivery stability
+
+**Closing statement (bottom center)**
+
+> AI will amplify outcomes—positive or negative—depending on the strength of the underlying system
+
+---
+
+## **Presenter Notes (tight, director tone)**
+
+* **S2–S4 (Diagnosis):** “We are seeing improved AI usage and quality, but worsening delivery outputs—this points to systemic issues upstream.”
+* **S5–S10 (Root causes):** “Five constraints—planning, flow, metrics, data, and stability—are jointly limiting performance.”
+* **S11–S12 (Action):** “Fixing these enables immediate gains and unlocks AI’s full value; sequence is critical.”
+
+---
