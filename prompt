@@ -1,0 +1,403 @@
+Implement a new **temporary monitoring chat assistant** in this existing **Next.js App Router** project.
+
+Build an chat experience where:
+- users can ask natural-language monitoring questions
+- chat history is stored only in **client-side React state**
+- the conversation is **lost on refresh**
+- there is **no persistence**, **no conversation IDs**, **no saved history**, and **no user association** yet
+
+This is a temporary MVP, but the code must be structured so it can later evolve into a persistent conversation system with:
+- conversation IDs
+- saved history in DynamoDB
+- bookmarkable conversation URLs
+- authenticated user ownership
+
+## Product context
+
+The project already has 3 existing agents built as standalone workflows. This new one is different: it is **conversation-driven** and acts as a **monitoring assistant** that answers questions using monitoring context from **Datadog**.
+
+## Important architecture
+
+Design around this future backend flow:
+
+**Browser UI -> Next.js app -> Next.js API route -> Python microservice on AWS Lambda -> AgentCore monitoring agent -> Datadog via MCP**
+
+Important:
+- the monitoring agent is implemented in **AgentCore**
+- it is wrapped by an **AWS Lambda**
+- Next.js should communicate through a **Python microservice hosted by Lambda**
+- that backend is **not implemented yet**
+- build against a clean interface and use a **mock provider/adapter** for now
+- do **not** put AgentCore/Datadog logic directly in UI components
+
+## Build now
+
+Create:
+- a new route like `/monitoring`
+- a clean chat UI with:
+  - message list
+  - user + assistant roles
+  - input + send button
+  - loading/thinking state
+  - error handling
+  - retry support
+  - clear chat action
+  - empty state with suggested prompts
+  - visible note that chat is temporary and lost on refresh
+  - auto-scroll to newest message
+  - responsive layout
+
+Suggested prompts:
+- “What errors spiked in the last hour?”
+- “Did latency increase for service X today?”
+- “Show any anomaly in checkout failures.”
+- “What changed in the last 24 hours for API error rate?”
+
+## State/model requirements
+
+Use a message model that works now and later:
+- id
+- role
+- content
+- createdAt
+- status
+- optional metadata
+
+Support statuses like:
+- pending
+- streaming
+- complete
+- error
+
+Even if the first version is request/response only, structure the UI so assistant messages can later be progressively updated via websocket or SSE.
+
+## API + service structure
+
+Add:
+- `POST /api/monitoring/assistant`
+
+This route should:
+- accept the latest user message
+- optionally accept temporary message history
+- call a backend integration service
+- return the assistant response
+
+Create a clean integration boundary for the future Python Lambda microservice, for example:
+- shared types
+- service/client layer
+- provider interface
+- mock provider for now
+- future python-lambda provider stub
+
+Expected architecture in code:
+- UI components are separated from transport logic
+- transport logic is separated from API route logic
+- API route logic is separated from upstream monitoring-agent integration logic
+
+## Future-proofing requirements
+
+Do not implement persistence yet, but leave clear extension points for:
+- conversation creation
+- fetching conversation by ID
+- posting messages into saved conversations
+- DynamoDB storage
+- logged-in user ownership
+- websocket/SSE streaming
+- replacing the mock provider with the real Lambda microservice
+
+Avoid hardcoding assumptions that no conversation ID will ever exist.
+
+## Suggested files
+
+Adapt to repo conventions, but likely something like:
+- `app/monitoring/page.tsx`
+- `components/monitoring-chat/...`
+- `hooks/useMonitoringChat.ts`
+- `app/api/monitoring/assistant/route.ts`
+- `lib/monitoring-assistant/types.ts`
+- `lib/monitoring-assistant/client.ts`
+- `lib/monitoring-assistant/service.ts`
+- `lib/monitoring-assistant/providers/mock-provider.ts`
+- `lib/monitoring-assistant/providers/python-lambda-provider.ts`
+
+## Implementation instructions
+
+1. First inspect the repo and follow existing patterns for routing, styling, API routes, and shared types.
+2. Implement the feature end-to-end.
+3. Use TypeScript if the repo uses it.
+4. Keep the MVP simple and production-minded.
+5. If the backend does not exist, use a realistic mock provider with clean interfaces.
+6. Add concise TODO comments for future persistence and real Lambda integration.
+
+## Deliverables after coding
+
+Provide:
+- summary of what was added
+- files created/changed
+- assumptions made
+- future extension points left open
+- TODOs for real Python Lambda / AgentCore / Datadog MCP integration
+
+## Non-goals
+
+Do not implement:
+- DynamoDB persistence
+- conversation history pages
+- bookmarkable chat URLs
+- authentication/user ownership
+- real websocket backend
+- real Python Lambda microservice
+- real AgentCore integration
+
+This task is specifically for a **temporary in-memory monitoring chat MVP** with a clean path to future persistence and real backend integration.
+
+
+
+&&&&&&&&&&&&&
+
+
+---
+
+I want you to act as a senior full-stack engineer and generate code for a new feature in an existing **Next.js App Router** application.
+
+Please be implementation-focused and output complete code, not just high-level advice.
+
+## Task
+
+Build a new **monitoring chat assistant** feature.
+
+This app already has 3 existing agents that are mostly **workflow/form-driven**. This new agent is different: it is **conversation-driven** and lets users ask freeform monitoring questions.
+
+The assistant is a **monitoring agent** that will eventually answer questions using **Datadog** context.
+
+Examples:
+- “What errors spiked in the last hour?”
+- “Did latency increase for service X today?”
+- “Show any anomaly in checkout failures.”
+- “What changed in the last 24 hours for API error rate?”
+
+---
+
+## MVP scope
+
+Build the first version as a **temporary in-memory chat**:
+- store conversation only in **client-side React state**
+- the chat is **lost on refresh**
+- there is **no database persistence**
+- there are **no conversation IDs yet**
+- there is **no saved history page**
+- there is **no user ownership/authentication yet**
+
+Important: this MVP must still be designed so it can later evolve into:
+- persistent conversations
+- conversation IDs
+- bookmarkable URLs
+- DynamoDB-backed storage
+- authenticated user ownership
+
+Do not implement persistence yet. Just leave clean extension points.
+
+---
+
+## Important backend architecture
+
+Design around this target backend flow:
+
+**Browser UI -> Next.js app -> Next.js API route -> Python microservice hosted on AWS Lambda -> AgentCore monitoring agent -> Datadog via MCP**
+
+Important details:
+- the monitoring agent is implemented in **AgentCore**
+- it will be wrapped by an **AWS Lambda**
+- the Next.js app should communicate through a **Python microservice on Lambda**
+- the real Python Lambda backend does **not exist yet**
+- the real AgentCore integration does **not exist yet**
+- for now, build against a clean interface and provide a **mock provider**
+- do **not** put Datadog logic or AgentCore logic in the UI
+
+---
+
+## What to implement
+
+Please implement the feature end-to-end.
+
+### Frontend
+Create a route like:
+- `/monitoring`
+
+Build a chat UI with:
+- message list
+- user and assistant messages
+- chat input
+- send button
+- loading/thinking state
+- error state
+- retry support
+- clear/reset chat
+- empty state with suggested prompts
+- visible note that chat is temporary and lost on refresh
+- responsive layout
+- auto-scroll to latest message
+
+Suggested prompts:
+- “What errors spiked in the last hour?”
+- “Did latency increase for service X today?”
+- “Show any anomaly in checkout failures.”
+- “What changed in the last 24 hours for API error rate?”
+
+### State model
+Use a message model like:
+- `id`
+- `role`
+- `content`
+- `createdAt`
+- `status`
+- optional `metadata`
+
+Statuses should include:
+- `pending`
+- `streaming`
+- `complete`
+- `error`
+
+Even if the MVP is simple request/response, structure state so future websocket/SSE streaming would be possible.
+
+### API
+Add:
+- `POST /api/monitoring/assistant`
+
+This route should:
+- accept latest user message
+- optionally accept temporary message history
+- call a backend integration/service layer
+- return assistant response
+
+### Integration layer
+Create a clean provider/service abstraction for the future Python Lambda microservice.
+
+Please include:
+- shared types
+- a service or provider interface
+- a **mock provider** that returns realistic fake monitoring answers
+- a **python-lambda provider stub** for future implementation
+
+The architecture should clearly reflect this future flow:
+
+**UI -> Next.js API route -> monitoring assistant service/provider -> future Python Lambda microservice -> AgentCore -> Datadog**
+
+---
+
+## Very important implementation constraints
+
+- Do not use localStorage or persistence
+- Do not implement conversation IDs yet, but do not design the code in a way that blocks them later
+- Keep rendering logic separate from transport logic
+- Keep transport logic separate from persistence assumptions
+- Keep API route logic separate from monitoring-agent integration logic
+- Add concise TODO comments for future:
+  - persistence
+  - conversation IDs
+  - bookmarkable URLs
+  - authentication/user ownership
+  - real Python Lambda integration
+  - websocket/SSE streaming support
+
+---
+
+## Expected output format
+
+Please answer in this exact order:
+
+### 1. Implementation plan
+Give a short plan.
+
+### 2. Proposed file structure
+List the files you will create/update.
+
+### 3. Code
+Generate the full code for all files needed.
+
+For each file:
+- show the file path as a heading
+- then show the complete code
+- do not omit important files
+- do not give placeholder comments like “rest of component here”
+- make the code runnable/adaptable
+
+### 4. Summary
+At the end, summarize:
+- files added/changed
+- assumptions made
+- future extension points left open
+- what needs to change when the real Python Lambda service exists
+
+---
+
+## Suggested file structure
+
+Use this if repo structure is unknown, otherwise adapt to project conventions:
+
+- `app/monitoring/page.tsx`
+- `components/monitoring-chat/MonitoringChat.tsx`
+- `components/monitoring-chat/ChatMessageList.tsx`
+- `components/monitoring-chat/ChatMessageItem.tsx`
+- `components/monitoring-chat/ChatInput.tsx`
+- `components/monitoring-chat/EmptyStatePrompts.tsx`
+- `components/monitoring-chat/TemporaryChatNotice.tsx`
+- `hooks/useMonitoringChat.ts`
+- `app/api/monitoring/assistant/route.ts`
+- `lib/monitoring-assistant/types.ts`
+- `lib/monitoring-assistant/client.ts`
+- `lib/monitoring-assistant/service.ts`
+- `lib/monitoring-assistant/providers/mock-provider.ts`
+- `lib/monitoring-assistant/providers/python-lambda-provider.ts`
+
+Use TypeScript.
+
+---
+
+## Acceptance criteria
+
+Your solution should satisfy:
+- user can open `/monitoring`
+- user can send a monitoring question
+- user message appears immediately
+- assistant response appears after API call
+- UI shows loading state
+- UI shows error state if request fails
+- retry works
+- clear chat works
+- chat exists only in client memory
+- refresh clears chat
+- UI clearly says chat is temporary
+- code has provider/service abstraction for future Lambda backend
+- code includes mock provider now
+- code is structured to support future streaming
+- code leaves clear room for future persistent conversations
+
+---
+
+## Non-goals
+
+Do not implement:
+- DynamoDB persistence
+- conversation history pages
+- bookmarkable conversation URLs
+- authentication/user ownership
+- real websocket backend
+- real Python Lambda backend
+- real AgentCore integration
+- real Datadog integration
+
+---
+
+## If something is ambiguous
+
+Make reasonable assumptions and state them in the summary, but still generate the code.
+
+---
+
+# Extra tip for using this with ChatGPT
+
+If ChatGPT truncates, follow with:
+
+**“Continue from the last file and do not repeat previous files.”**
